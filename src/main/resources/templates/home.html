@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Corona Tracker Application</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<h1>Corona Tracker Application</h1>
+	<p>This application shows the current no of cases across the globe</p>
+
+	<div class="jumbotron">
+		<h1 class="display-4" th:text="${totalTodayCount}">""</h1>
+		<p class="lead">Total Cases Reported as of Today</p>
+		<hr class="my-4">
+		<p>
+			<span>New Cases Reported since yesterday</span>
+			<span th:text="${totalNewCount}">""</span>
+		</p>
+	</div>
+	<table class="table table-striped table-hover">
+		<tr>
+			<th>Country</th>
+			<th>Province</th>
+			<th>Total Count Till Date</th>
+			<th>New Count Today</th>
+		</tr>
+		<tr th:each="data : ${allData}">
+			<td th:text="${data.country}">""</td>
+			<td th:text="${data.province}">""</td>
+			<td th:text="${data.currentCount}">0</td>
+			<td th:text="${data.newCount}">0</td>
+		</tr>
+	</table>
+
+</body>
+
+</html>
